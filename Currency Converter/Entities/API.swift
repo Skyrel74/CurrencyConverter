@@ -32,6 +32,7 @@ enum API {
             for currency_ in rates {
                 currency.append(Currency(name: currency_.key as! String, proportion: currency_.value as! Double))
             }
+            currency.sort { $0.name < $1.name}
             DispatchQueue.main.async {
                 completion(currency)
             }
