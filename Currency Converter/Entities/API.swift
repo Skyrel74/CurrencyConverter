@@ -25,7 +25,7 @@ enum API {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard
                 let data = data,
-                let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! JSON
+                let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? JSON
                 else { return }
             let rates = json["rates"] as! NSDictionary
             var currency = [Currency]()
@@ -38,5 +38,33 @@ enum API {
             }
         }
         task.resume()
+    }
+    
+    static var Symbol = "EUR"
+    
+    static func chartLoad(completion: @escaping ([Currency]) -> Void) {
+        let calendar = Calendar.current
+        var currency = [Currency]()
+        for index in -5...0 {
+            let dateLoop = Calendar.current.date(byAdding: .month, value: index, to: Date())
+            //WARNING: Crap code
+            let url = URL(string: "http://data.fixer.io/api/\(calendar.component(.year, from: dateLoop!))-\((calendar.component(.month, from: dateLoop!)) / 10 == 0 ? "0\(calendar.component(.month, from: dateLoop!))":"\((calendar.component(.month, from: dateLoop!)))")-\(calendar.component(.day, from: dateLoop!) - 1)?access_key=\(API_KEY)&symbols=\(Symbol)")!
+            let request = URLRequest(url: url)
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard
+                    let data = data,
+                    let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? JSON
+                    else { return }
+                let rates = json["rates"] as! NSDictionary
+                for currency_ in rates {
+                    currency.append(Currency(name: currency_.key as! String, proportion: currency_.value as! Double))
+                }
+                DispatchQueue.main.async {
+                    completion(currency)
+                }
+            }
+            task.resume()
+        }
     }
 }

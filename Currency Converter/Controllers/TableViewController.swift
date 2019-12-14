@@ -37,14 +37,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "chartsSegue" {
+            if let nextVC = segue.destination as? MoreInfoViewController {
+                nextVC.indexPathRow = self.currencyTable.indexPathForSelectedRow!.row
+            }
+        }
     }
-    */
-
 }

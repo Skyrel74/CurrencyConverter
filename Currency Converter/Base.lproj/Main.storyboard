@@ -122,7 +122,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="1Du-0h-1OJ" id="zou-Eg-tl7"/>
                                             <outlet property="valueLabel" destination="ylN-kM-JaD" id="apo-X0-ckD"/>
-                                            <segue destination="o0E-DD-cm0" kind="show" id="20x-6s-boi"/>
+                                            <segue destination="o0E-DD-cm0" kind="show" identifier="chartsSegue" id="20x-6s-boi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -164,31 +164,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="589"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iec-n3-1j5" customClass="LineChartView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iec-n3-1j5" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="25" y="240" width="325" height="173"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Iec-n3-1j5" secondAttribute="height" multiplier="15:8" id="6Ia-hB-7ms"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syO-5Z-fBd">
-                                <rect key="frame" x="166.5" y="194" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syO-5Z-fBd">
+                                <rect key="frame" x="187.5" y="215" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UI1-oK-Q4R">
+                                <rect key="frame" x="177.5" y="316.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="syO-5Z-fBd" firstAttribute="centerX" secondItem="nga-1t-Jer" secondAttribute="centerX" id="7O3-zE-7f9"/>
                             <constraint firstItem="Iec-n3-1j5" firstAttribute="leading" secondItem="1SC-MT-0NQ" secondAttribute="leading" constant="25" id="GYU-iH-gH1"/>
+                            <constraint firstItem="UI1-oK-Q4R" firstAttribute="centerY" secondItem="nga-1t-Jer" secondAttribute="centerY" id="HEf-E5-fYi"/>
                             <constraint firstAttribute="trailing" secondItem="Iec-n3-1j5" secondAttribute="trailing" constant="25" id="MwI-iI-VWX"/>
+                            <constraint firstItem="UI1-oK-Q4R" firstAttribute="centerX" secondItem="nga-1t-Jer" secondAttribute="centerX" id="O5S-xO-3Oc"/>
                             <constraint firstItem="Iec-n3-1j5" firstAttribute="centerX" secondItem="nga-1t-Jer" secondAttribute="centerX" id="bdL-d1-y57"/>
                             <constraint firstItem="Iec-n3-1j5" firstAttribute="top" secondItem="syO-5Z-fBd" secondAttribute="bottom" constant="25" id="lLH-Lo-6jL"/>
                             <constraint firstItem="Iec-n3-1j5" firstAttribute="centerY" secondItem="nga-1t-Jer" secondAttribute="centerY" id="pHa-7w-gUD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nga-1t-Jer"/>
                     </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="syO-5Z-fBd" id="jex-7c-jn3"/>
+                        <outlet property="lineChartView" destination="Iec-n3-1j5" id="Gax-DW-6kq"/>
+                        <outlet property="loadIndicator" destination="UI1-oK-Q4R" id="hJY-9Y-bcY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH1-ec-mLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

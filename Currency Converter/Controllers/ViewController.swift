@@ -14,7 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var converterContainer: UIView!
     @IBOutlet weak var favoriteContainer: UIView!
     
-    //Switch action for navigation
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Navigation
+    
     @IBAction func `switch`(_ sender: UISegmentedControl) {
         switch(sender.selectedSegmentIndex) {
         case 0:
@@ -35,10 +40,6 @@ class ViewController: UIViewController {
         default:
             break;
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
 }

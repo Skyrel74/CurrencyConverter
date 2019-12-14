@@ -7,24 +7,44 @@
 //
 
 import UIKit
+import Charts
 
 class MoreInfoViewController: UIViewController {
     
+    var indexPathRow = Int()
+    var rates = [Currency]()
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        API.Symbol = Currency.shared[indexPathRow].name
+        API.chartLoad { currencyArray in
+            self.lineChartView.alpha = 0
+            self.loadIndicator.startAnimating()
+            self.rates = currencyArray
+            self.setChartValues()
+            self.loadIndicator.stopAnimating()
+            self.lineChartView.alpha = 1
+            self.infoLabel.text = Currency.shared[self.indexPathRow].name + " exchange EUR in half year"
+        }
     }
-    */
-
+    
+    func setChartValues() {
+        let count: Int = rates.count
+        let values = (0..<count).map { (i) -> ChartDataEntry in
+            let val = rates[i].proportion
+            return ChartDataEntry(x: Double(i), y: val)
+        }
+        
+        let set1 = LineChartDataSet(values: values, label: Currency.shared[indexPathRow].name)
+        let data = LineChartData(dataSet: set1)
+        
+        self.lineChartView.data = data
+    }
 }
