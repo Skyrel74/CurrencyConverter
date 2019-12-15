@@ -31,8 +31,9 @@ enum API {
             var currency = [Currency]()
             for currency_ in rates {
                 currency.append(Currency(name: currency_.key as! String, proportion: currency_.value as! Double))
+                CoreDataManager.save(name: currency_.key as! String, proportion: currency_.value as! Double)
             }
-            currency.sort { $0.name < $1.name}
+            CoreDataManager.shared.sort { ($0.value(forKey: "name") as! String) < ($1.value(forKey: "name") as! String) }
             DispatchQueue.main.async {
                 completion(currency)
             }

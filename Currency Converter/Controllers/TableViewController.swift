@@ -15,10 +15,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         API.loadCurrency { currencyArray in
             self.loadIndicator.startAnimating()
-            Currency.shared = currencyArray
             self.currencyTable.reloadData()
             self.loadIndicator.stopAnimating()
         }
@@ -27,13 +26,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Currency.shared.count
+        return CoreDataManager.shared.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellVC") as! CellVC
-        let currency = Currency.shared[indexPath.row]
-        cell.setup(name: currency.name, value: currency.proportion)
+        let currency = CoreDataManager.shared[indexPath.row]
+        cell.setup(name: currency.value(forKey: "name") as? String, value: currency.value(forKey: "proportion") as? Double)
         return cell
     }
     

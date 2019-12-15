@@ -20,6 +20,7 @@
 		906D6CB723A156BF0082726E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 906D6CB523A156BF0082726E /* LaunchScreen.storyboard */; };
 		907C7BC923A22E5300453EB8 /* CellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C7BC823A22E5300453EB8 /* CellVC.swift */; };
 		908C4E1123A422B00008A70E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908C4E1023A422B00008A70E /* Charts.framework */; };
+		90E79DC723A6A2D200436E80 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E79DC623A6A2D200436E80 /* CoreDataManager.swift */; };
 		90ECF97C23A6646A009C1A01 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ECF97B23A6646A009C1A01 /* PickerVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		906D6CB823A156BF0082726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907C7BC823A22E5300453EB8 /* CellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellVC.swift; sourceTree = "<group>"; };
 		908C4E1023A422B00008A70E /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90E79DC623A6A2D200436E80 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		90ECF97B23A6646A009C1A01 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		9BFC501110F9DA755EDBF130 /* Pods_Currency_Converter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Currency_Converter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 			children = (
 				900BDD9C23A15E5500EDBBC1 /* API.swift */,
 				900BDD9E23A15F1D00EDBBC1 /* Currency.swift */,
+				90E79DC623A6A2D200436E80 /* CoreDataManager.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				907C7BC923A22E5300453EB8 /* CellVC.swift in Sources */,
 				902E8D1823A414B000069922 /* MoreInfoViewController.swift in Sources */,
 				900BDD9D23A15E5500EDBBC1 /* API.swift in Sources */,
+				90E79DC723A6A2D200436E80 /* CoreDataManager.swift in Sources */,
 				906D6CAA23A156BC0082726E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

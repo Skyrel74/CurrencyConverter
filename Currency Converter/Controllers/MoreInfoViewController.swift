@@ -23,7 +23,7 @@ class MoreInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        API.Symbol = Currency.shared[indexPathRow].name
+        API.Symbol = CoreDataManager.shared[indexPathRow].value(forKey: "name") as! String
         API.chartLoad { currencyArray in
             self.lineChartView.alpha = 0
             self.loadIndicator.startAnimating()
@@ -31,7 +31,7 @@ class MoreInfoViewController: UIViewController {
             self.setChartValues()
             self.loadIndicator.stopAnimating()
             self.lineChartView.alpha = 1
-            self.infoLabel.text = Currency.shared[self.indexPathRow].name + " exchange EUR in half year"
+            self.infoLabel.text = CoreDataManager.shared[self.indexPathRow].value(forKey: "name") as! String + " exchange EUR in half year"
         }
     }
     
@@ -42,7 +42,7 @@ class MoreInfoViewController: UIViewController {
             return ChartDataEntry(x: Double(i), y: val)
         }
         
-        let set1 = LineChartDataSet(values: values, label: Currency.shared[indexPathRow].name)
+        let set1 = LineChartDataSet(values: values, label: CoreDataManager.shared[self.indexPathRow].value(forKey: "name") as? String)
         let data = LineChartData(dataSet: set1)
         
         self.lineChartView.data = data

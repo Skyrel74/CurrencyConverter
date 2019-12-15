@@ -215,7 +215,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How much" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-n5-vFY">
                                 <rect key="frame" x="41" y="45" width="175" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="ZEu-1b-73u"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="ZEu-1b-73u"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -231,15 +231,17 @@
                                     <action selector="convert:" destination="SGW-AM-OAu" eventType="touchUpInside" id="1eN-gg-ymg"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" restorationIdentifier="first" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-LZ-y4F">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-LZ-y4F">
                                 <rect key="frame" x="0.0" y="316" width="375" height="216"/>
+                                <accessibility key="accessibilityConfiguration" identifier="first"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SGW-AM-OAu" id="1c1-Ch-rpK"/>
                                     <outlet property="delegate" destination="SGW-AM-OAu" id="36F-Ek-ukF"/>
                                 </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" restorationIdentifier="second" translatesAutoresizingMaskIntoConstraints="NO" id="faD-1s-97k">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faD-1s-97k">
                                 <rect key="frame" x="0.0" y="100" width="375" height="216"/>
+                                <accessibility key="accessibilityConfiguration" identifier="second"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SGW-AM-OAu" id="obP-OE-TFG"/>
                                     <outlet property="delegate" destination="SGW-AM-OAu" id="d1d-7w-UHE"/>

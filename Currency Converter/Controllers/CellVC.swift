@@ -13,8 +13,8 @@ class CellVC: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    func setup(name: String, value: Double) {
+    func setup(name: String?, value: Double?) {
         nameLabel.text = name
-        valueLabel.text = String(format: "%f", value) + " EUR"
+        valueLabel.text = String(format: "%f", value ?? "0") + " EUR"
     }
 }

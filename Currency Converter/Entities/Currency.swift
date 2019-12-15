@@ -8,8 +8,6 @@
 
 class Currency {
     
-    static var shared = [Currency]()
-    
     var name: String
     var proportion: Double
     
@@ -19,4 +17,5 @@ class Currency {
         self.name = name
         self.proportion = proportion
     }
+    
 }
