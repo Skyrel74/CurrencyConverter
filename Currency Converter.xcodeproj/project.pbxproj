@@ -20,6 +20,7 @@
 		906D6CB723A156BF0082726E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 906D6CB523A156BF0082726E /* LaunchScreen.storyboard */; };
 		907C7BC923A22E5300453EB8 /* CellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C7BC823A22E5300453EB8 /* CellVC.swift */; };
 		908C4E1123A422B00008A70E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908C4E1023A422B00008A70E /* Charts.framework */; };
+		90ECF97C23A6646A009C1A01 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ECF97B23A6646A009C1A01 /* PickerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		906D6CB823A156BF0082726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907C7BC823A22E5300453EB8 /* CellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellVC.swift; sourceTree = "<group>"; };
 		908C4E1023A422B00008A70E /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90ECF97B23A6646A009C1A01 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		9BFC501110F9DA755EDBF130 /* Pods_Currency_Converter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Currency_Converter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				907C7BC823A22E5300453EB8 /* CellVC.swift */,
 				902E8D1523A3F9CD00069922 /* TableViewController.swift */,
 				902E8D1723A414B000069922 /* MoreInfoViewController.swift */,
+				90ECF97B23A6646A009C1A01 /* PickerVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				906D6CAC23A156BC0082726E /* ViewController.swift in Sources */,
 				902E8D1623A3F9CD00069922 /* TableViewController.swift in Sources */,
 				900BDD9F23A15F1D00EDBBC1 /* Currency.swift in Sources */,
+				90ECF97C23A6646A009C1A01 /* PickerVC.swift in Sources */,
 				906D6CB223A156BC0082726E /* Currency_Converter.xcdatamodeld in Sources */,
 				907C7BC923A22E5300453EB8 /* CellVC.swift in Sources */,
 				902E8D1823A414B000069922 /* MoreInfoViewController.swift in Sources */,

@@ -204,20 +204,85 @@
             </objects>
             <point key="canvasLocation" x="2532" y="-654.42278860569718"/>
         </scene>
-        <!--View Controller-->
+        <!--PickerVC-->
         <scene sceneID="5cf-Ki-5Iz">
             <objects>
-                <viewController id="SGW-AM-OAu" sceneMemberID="viewController">
+                <viewController id="SGW-AM-OAu" customClass="PickerVC" customModule="Currency_Converter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fga-Es-q6w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="589"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.1678815008725163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How much" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-n5-vFY">
+                                <rect key="frame" x="41" y="45" width="175" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="ZEu-1b-73u"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" textContentType="tel"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbe-bF-K9r">
+                                <rect key="frame" x="279" y="44" width="71" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.077521931870000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="CONVERT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="convert:" destination="SGW-AM-OAu" eventType="touchUpInside" id="1eN-gg-ymg"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" restorationIdentifier="first" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-LZ-y4F">
+                                <rect key="frame" x="0.0" y="316" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SGW-AM-OAu" id="1c1-Ch-rpK"/>
+                                    <outlet property="delegate" destination="SGW-AM-OAu" id="36F-Ek-ukF"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" restorationIdentifier="second" translatesAutoresizingMaskIntoConstraints="NO" id="faD-1s-97k">
+                                <rect key="frame" x="0.0" y="100" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SGW-AM-OAu" id="obP-OE-TFG"/>
+                                    <outlet property="delegate" destination="SGW-AM-OAu" id="d1d-7w-UHE"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-1S-SMG">
+                                <rect key="frame" x="187.5" y="542" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="faD-1s-97k" firstAttribute="leading" secondItem="fga-Es-q6w" secondAttribute="leading" id="0N4-vp-Abj"/>
+                            <constraint firstItem="DAf-n5-vFY" firstAttribute="top" secondItem="y80-3k-vAG" secondAttribute="top" constant="25" id="2Qp-Bh-e7O"/>
+                            <constraint firstItem="nLw-LZ-y4F" firstAttribute="leading" secondItem="fga-Es-q6w" secondAttribute="leading" id="2YM-Sf-reX"/>
+                            <constraint firstItem="DAf-n5-vFY" firstAttribute="baseline" secondItem="hbe-bF-K9r" secondAttribute="baseline" id="B2Y-3n-xhx"/>
+                            <constraint firstItem="hbe-bF-K9r" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DAf-n5-vFY" secondAttribute="trailing" id="NAE-4d-zvr"/>
+                            <constraint firstItem="Hu3-1S-SMG" firstAttribute="top" secondItem="nLw-LZ-y4F" secondAttribute="bottom" constant="10" id="Nkd-en-n0H"/>
+                            <constraint firstItem="Hu3-1S-SMG" firstAttribute="centerX" secondItem="y80-3k-vAG" secondAttribute="centerX" id="YGm-Co-CcX"/>
+                            <constraint firstItem="Hu3-1S-SMG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y80-3k-vAG" secondAttribute="leading" constant="25" id="bSb-0V-MgW"/>
+                            <constraint firstAttribute="trailing" secondItem="nLw-LZ-y4F" secondAttribute="trailing" id="csH-tw-T1U"/>
+                            <constraint firstItem="y80-3k-vAG" firstAttribute="trailing" secondItem="hbe-bF-K9r" secondAttribute="trailing" constant="25" id="f6b-zQ-Gn2"/>
+                            <constraint firstItem="DAf-n5-vFY" firstAttribute="leading" secondItem="fga-Es-q6w" secondAttribute="leadingMargin" constant="25" id="hoJ-e7-VFe"/>
+                            <constraint firstItem="faD-1s-97k" firstAttribute="top" secondItem="DAf-n5-vFY" secondAttribute="bottom" constant="25" id="omd-rX-sG9"/>
+                            <constraint firstItem="y80-3k-vAG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hu3-1S-SMG" secondAttribute="trailing" constant="25" id="sIy-kA-Dwx"/>
+                            <constraint firstItem="nLw-LZ-y4F" firstAttribute="top" secondItem="faD-1s-97k" secondAttribute="bottom" id="skQ-BU-XHN"/>
+                            <constraint firstAttribute="trailing" secondItem="faD-1s-97k" secondAttribute="trailing" id="weQ-Wk-Nia"/>
+                            <constraint firstItem="y80-3k-vAG" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Hu3-1S-SMG" secondAttribute="bottom" constant="25" id="zhX-5S-rur"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="y80-3k-vAG"/>
                     </view>
+                    <connections>
+                        <outlet property="firstPickerView" destination="nLw-LZ-y4F" id="hct-Xu-zX7"/>
+                        <outlet property="input" destination="DAf-n5-vFY" id="fpo-Do-iEC"/>
+                        <outlet property="resultLabel" destination="Hu3-1S-SMG" id="QF8-wX-kLb"/>
+                        <outlet property="secondPickerView" destination="faD-1s-97k" id="2rL-pS-tg7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRV-ne-P0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="57"/>
+            <point key="canvasLocation" x="834" y="81"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="igH-3q-m4S">
