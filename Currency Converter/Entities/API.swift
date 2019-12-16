@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 typealias JSON = [String : Any]
 
@@ -18,7 +19,7 @@ enum API {
         return "http://data.fixer.io/api/latest?access_key=\(API_KEY)"
     }
     
-    static func loadCurrency(completion: @escaping ([Currency]) -> Void) {
+    static func loadCurrency(completion: @escaping ([NSManagedObject]) -> Void) {
         let url = URL(string: dataURL)!
         let request = URLRequest(url: url)
         
@@ -28,14 +29,12 @@ enum API {
                 let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? JSON
                 else { return }
             let rates = json["rates"] as! NSDictionary
-            var currency = [Currency]()
             for currency_ in rates {
-                currency.append(Currency(name: currency_.key as! String, proportion: currency_.value as! Double))
                 CoreDataManager.save(name: currency_.key as! String, proportion: currency_.value as! Double)
             }
             CoreDataManager.shared.sort { ($0.value(forKey: "name") as! String) < ($1.value(forKey: "name") as! String) }
             DispatchQueue.main.async {
-                completion(currency)
+                completion(CoreDataManager.shared)
             }
         }
         task.resume()

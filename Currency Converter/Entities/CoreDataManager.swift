@@ -31,7 +31,7 @@ enum CoreDataManager {
         
         do {
             try managedContext.save()
-            shared.append(currency)
+            self.shared.append(currency)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -48,9 +48,30 @@ enum CoreDataManager {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Money")
         
         do {
-            shared = try managedContext.fetch(fetchRequest)
+            self.shared = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    static func clearData() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Money")
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do
+        {
+            try context.execute(deleteRequest)
+            try context.save()
+        }
+        catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
         }
     }
 }

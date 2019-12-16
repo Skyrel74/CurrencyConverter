@@ -8,13 +8,10 @@
 
 import UIKit
 
-class PickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
+class PickerVC: UIViewController {
     
     var firstCurrency: Int = 0;
     var secondCurrency: Int = 0;
-
     
     //OBJECTS
     @IBOutlet weak var input: UITextField!
@@ -22,10 +19,9 @@ class PickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var secondPickerView: UIPickerView!
     @IBOutlet weak var resultLabel: UILabel!
     
-    
     @IBAction func convert(_ sender: UIButton) {
         if(input.text != "") {
-            resultLabel.text = "\(input.text!) \(CoreDataManager.shared[firstCurrency].value(forKey: "name") as! String) equal \(Double(input.text!)! * ((CoreDataManager.shared[firstCurrency].value(forKey: "proportion") as! Double)/(CoreDataManager.shared[secondCurrency].value(forKey: "proportion") as! Double))) \(CoreDataManager.shared[secondCurrency].value(forKey: "name") as! String)"
+            resultLabel.text = "\(input.text!) \(CoreDataManager.shared[firstCurrency].value(forKey: "name") as! String) equal \(String(format: "%.3f", Double(input.text!)! * ((CoreDataManager.shared[firstCurrency].value(forKey: "proportion") as! Double)/(CoreDataManager.shared[secondCurrency].value(forKey: "proportion") as! Double)))) \(CoreDataManager.shared[secondCurrency].value(forKey: "name") as! String)"
         }
     }
     
@@ -33,14 +29,26 @@ class PickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         super.viewDidLoad()
         
         input.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    @objc func reload() {
         self.firstPickerView.reloadAllComponents()
         self.secondPickerView.reloadAllComponents()
     }
+    
+    
+}
+
+extension PickerVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharecters = CharacterSet.decimalDigits
+        let charecterSet = CharacterSet(charactersIn: string)
+        return allowedCharecters.isSuperset(of: charecterSet)
+    }
+}
+
+extension PickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -61,14 +69,5 @@ class PickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         else {
             firstCurrency = row
         }
-    }
-    
-}
-
-extension PickerVC: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharecters = CharacterSet.decimalDigits
-        let charecterSet = CharacterSet(charactersIn: string)
-        return allowedCharecters.isSuperset(of: charecterSet)
     }
 }

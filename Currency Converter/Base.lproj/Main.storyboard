@@ -19,22 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6dW-zi-XRy">
-                                <rect key="frame" x="15.5" y="35" width="344" height="29"/>
+                                <rect key="frame" x="98" y="35" width="179" height="29"/>
                                 <segments>
                                     <segment title="All Currency"/>
                                     <segment title="Converter"/>
-                                    <segment title="Favorite Convert"/>
                                 </segments>
                                 <connections>
                                     <action selector="switch:" destination="BYZ-38-t0r" eventType="valueChanged" id="hPK-5Z-aXD"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dom-Fu-UW0">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
-                                <connections>
-                                    <segue destination="IUC-Tj-N6d" kind="embed" id="UuY-Ty-Fye"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kO2-F1-6jG">
                                 <rect key="frame" x="0.0" y="78" width="375" height="589"/>
                                 <connections>
@@ -50,8 +43,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dom-Fu-UW0" secondAttribute="trailing" id="3i1-Y0-Lte"/>
-                            <constraint firstItem="dom-Fu-UW0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Nv-zE-2Y6"/>
                             <constraint firstItem="6dW-zi-XRy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8ny-ER-fnZ"/>
                             <constraint firstItem="MLI-1n-mBF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="InU-Cb-nw5"/>
                             <constraint firstItem="kO2-F1-6jG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jlb-Iz-mRB"/>
@@ -59,8 +50,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MLI-1n-mBF" secondAttribute="trailing" id="PCY-k0-611"/>
                             <constraint firstAttribute="bottom" secondItem="kO2-F1-6jG" secondAttribute="bottom" id="RqD-FL-9X9"/>
                             <constraint firstAttribute="bottom" secondItem="MLI-1n-mBF" secondAttribute="bottom" id="Ux4-xV-rVz"/>
-                            <constraint firstItem="dom-Fu-UW0" firstAttribute="top" secondItem="6dW-zi-XRy" secondAttribute="bottom" constant="15" id="WlW-50-KVq"/>
-                            <constraint firstAttribute="bottom" secondItem="dom-Fu-UW0" secondAttribute="bottom" id="XVo-Y3-7jY"/>
                             <constraint firstItem="MLI-1n-mBF" firstAttribute="top" secondItem="6dW-zi-XRy" secondAttribute="bottom" constant="15" id="YbV-EJ-sHs"/>
                             <constraint firstItem="kO2-F1-6jG" firstAttribute="top" secondItem="6dW-zi-XRy" secondAttribute="bottom" constant="15" id="exH-kS-MQE"/>
                             <constraint firstItem="6dW-zi-XRy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gWd-gY-0Zt"/>
@@ -71,7 +60,6 @@
                     </view>
                     <connections>
                         <outlet property="converterContainer" destination="kO2-F1-6jG" id="QwV-ff-3gj"/>
-                        <outlet property="favoriteContainer" destination="dom-Fu-UW0" id="I5J-St-zAI"/>
                         <outlet property="tableContainer" destination="MLI-1n-mBF" id="qvW-D7-pBq"/>
                     </connections>
                 </viewController>
@@ -285,21 +273,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRV-ne-P0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="834" y="81"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="igH-3q-m4S">
-            <objects>
-                <viewController id="IUC-Tj-N6d" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pAq-oN-Et9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="589"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.077521931866742388" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="ezm-d2-QMb"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o0O-Ky-IAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="825" y="791"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3k7-SW-rk2">

@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableContainer: UIView!
     @IBOutlet weak var converterContainer: UIView!
-    @IBOutlet weak var favoriteContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +24,14 @@ class ViewController: UIViewController {
         case 0:
             tableContainer.alpha = 1
             converterContainer.alpha = 0
-            favoriteContainer.alpha = 0
             break;
         case 1:
             tableContainer.alpha = 0
             converterContainer.alpha = 1
-            favoriteContainer.alpha = 0
             break;
         case 2:
             tableContainer.alpha = 0
             converterContainer.alpha = 0
-            favoriteContainer.alpha = 1
             break;
         default:
             break;
