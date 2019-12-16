@@ -7,5 +7,6 @@ target 'Currency Converter' do
 
   # Pods for Currency Converter
 
-  pod 'Charts', '3.2.0'
+  pod 'Charts'
+  pod 'Alamofire'
 end

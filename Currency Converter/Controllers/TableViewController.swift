@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import Network
+import Alamofire
 
 class TableViewController: UIViewController {
-    
-    let monitor = NWPathMonitor()
 
     @IBOutlet weak var currencyTable: UITableView!
     @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
@@ -19,26 +17,22 @@ class TableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CoreDataManager.clearData()
-        API.loadCurrency { currencyArray in
+        if NetworkReachabilityManager()!.isReachable {
+            print("Inet")
+            CoreDataManager.clearData()
+            API.loadCurrency { currencyArray in
+                self.currencyTable.reloadData()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+                self.loadIndicator.stopAnimating()
+            }            
+        } else {
+            print("No Inet")
+            CoreDataManager.fetch()
+            CoreDataManager.shared.sort { ($0.value(forKey: "name") as! String) < ($1.value(forKey: "name") as! String) }
             self.currencyTable.reloadData()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
             self.loadIndicator.stopAnimating()
         }
-        
-        /*monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                print("Yay! We have internet!")
-            }else{
-                print("NO")
-            }
-        }*/
-        
-        CoreDataManager.fetch()
-        CoreDataManager.shared.sort { ($0.value(forKey: "name") as! String) < ($1.value(forKey: "name") as! String) }
-        self.currencyTable.reloadData()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-        self.loadIndicator.stopAnimating()
     }
     
     // MARK: - Navigation
