@@ -18,15 +18,12 @@ class TableViewController: UIViewController {
         super.viewDidLoad()
         
         if NetworkReachabilityManager()!.isReachable {
-            print("Inet")
-            CoreDataManager.clearData()
             API.loadCurrency { currencyArray in
                 self.currencyTable.reloadData()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 self.loadIndicator.stopAnimating()
             }            
         } else {
-            print("No Inet")
             CoreDataManager.fetch()
             CoreDataManager.shared.sort { ($0.value(forKey: "name") as! String) < ($1.value(forKey: "name") as! String) }
             self.currencyTable.reloadData()

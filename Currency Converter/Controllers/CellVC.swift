@@ -15,6 +15,6 @@ class CellVC: UITableViewCell {
     
     func setup(name: String?, value: Double?) {
         nameLabel.text = name
-        valueLabel.text = String(format: "%f", value ?? "0") + " EUR"
+        valueLabel.text = String(format: "%f", 1/(value ?? 1)) + " EUR"
     }
 }

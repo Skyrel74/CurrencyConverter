@@ -38,7 +38,7 @@ class MoreInfoViewController: UIViewController {
     func setChartValues() {
         let count: Int = rates.count
         let values = (0..<count).map { (i) -> ChartDataEntry in
-            let val = rates[i].proportion
+            let val = 1/(rates[i].proportion)
             return ChartDataEntry(x: Double(i), y: val)
         }
         

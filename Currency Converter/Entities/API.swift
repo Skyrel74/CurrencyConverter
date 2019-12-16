@@ -29,6 +29,7 @@ enum API {
                 let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? JSON
                 else { return }
             let rates = json["rates"] as! NSDictionary
+            CoreDataManager.clearData()
             for currency_ in rates {
                 CoreDataManager.save(name: currency_.key as! String, proportion: currency_.value as! Double)
             }

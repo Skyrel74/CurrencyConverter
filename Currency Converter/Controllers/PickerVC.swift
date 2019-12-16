@@ -21,7 +21,7 @@ class PickerVC: UIViewController {
     
     @IBAction func convert(_ sender: UIButton) {
         if(input.text != "") {
-            resultLabel.text = "\(input.text!) \(CoreDataManager.shared[firstCurrency].value(forKey: "name") as! String) equal \(String(format: "%.3f", Double(input.text!)! * ((CoreDataManager.shared[firstCurrency].value(forKey: "proportion") as! Double)/(CoreDataManager.shared[secondCurrency].value(forKey: "proportion") as! Double)))) \(CoreDataManager.shared[secondCurrency].value(forKey: "name") as! String)"
+            resultLabel.text = "\(input.text!) \(CoreDataManager.shared[firstCurrency].value(forKey: "name") as! String) equal \(String(format: "%.3f", Double(input.text!)! * ((CoreDataManager.shared[secondCurrency].value(forKey: "proportion") as! Double)/(CoreDataManager.shared[firstCurrency].value(forKey: "proportion") as! Double)))) \(CoreDataManager.shared[secondCurrency].value(forKey: "name") as! String)"
         }
     }
     
